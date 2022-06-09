@@ -4,16 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <meta content="viewport" content="width=device-width, initial-scale=1.0">
-    <title>okayge</title>
     <link rel="stylesheet" href="style.css">
+    <title>Online Editor</title>
 </head>
-
 <body>
 <form action="strona.php" method="POST" id="read">
 <input type="number" name="read" id="inputr">
 </form>
 <div id="kontener">
-<span id="tytul"> Online group editor! !</span>
+<span id="tytul"> Online Editor</span>
 <div id='tekst'>
 <form action="strona.php" method="POST" id="forma">
 <textarea name="text" spellcheck="false" id="txtar"><?php
@@ -38,7 +37,6 @@ function read(){
         $tekstw = $_POST['text'];
         fwrite($plikw, $tekstw);
         fclose($plikw);
-
         read();
     }
     else{
@@ -52,5 +50,4 @@ function read(){
 <script src="skrypt.js">
 </script>
 </body>
-
 </html>
