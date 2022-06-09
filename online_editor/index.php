@@ -8,13 +8,13 @@
     <title>Online Editor</title>
 </head>
 <body>
-<form action="strona.php" method="POST" id="read">
+<form action="index.php" method="POST" id="read">
 <input type="number" name="read" id="inputr">
 </form>
 <div id="kontener">
 <span id="tytul"> Online Editor</span>
 <div id='tekst'>
-<form action="strona.php" method="POST" id="forma">
+<form action="index.php" method="POST" id="forma">
 <textarea name="text" spellcheck="false" id="txtar"><?php
 function read(){
     if(filesize("tekst.txt")>0){
