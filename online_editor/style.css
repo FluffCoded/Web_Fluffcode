@@ -1,0 +1,65 @@
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,900|Cabin:400,900|Droid+Serif:400,700);
+
+html, body{
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+}
+body{
+    background-color: rgb(9, 27, 78);
+    color: white;
+}
+#kontener{
+    position: relative;
+    top: 1%;
+    width: 100%;
+    height: 99%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#tytul{
+    background-color: rgb(34, 77, 196);
+    position: relative;
+    width: 98%;
+    height: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 60px;
+    font-family: cursive;
+}
+
+/* FORMULARZ  */
+
+#tekst{
+    position: relative;
+    width: 98%;
+    height: 78%;
+    background-color: rgb(11, 54, 173);
+    color: white;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+textarea{
+    width: 100%;
+    height: 100%;
+    background-color: rgb(11, 54, 173);
+    color: white;
+    text-decoration: none;
+    border: none;
+    resize: none;
+    outline: none;
+    font-size: 30px;
+    font-family: cursive;
+    line-height: 30px;
+    box-sizing: border-box;
+    padding-left: 10px;
+}
+form{
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+/* END OF FORMULARZ  */
