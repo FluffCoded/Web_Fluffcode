@@ -30,7 +30,15 @@ body{
     font-size: 60px;
     font-family: cursive;
 }
-
+/* FORMULARZ  ODCZYTU*/
+#read{
+    position: fixed;
+    top: 0;
+    width: 100px;
+    height: 50px;
+    z-index: 2;
+    opacity: 1;
+}
 /* FORMULARZ  */
 
 #tekst{
@@ -57,7 +65,7 @@ textarea{
     box-sizing: border-box;
     padding-left: 10px;
 }
-form{
+#forma{
     position: relative;
     width: 100%;
     height: 100%;
