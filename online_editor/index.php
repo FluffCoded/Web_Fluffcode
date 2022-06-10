@@ -13,6 +13,7 @@
 </form>
 <div id="kontener">
 <span id="tytul"> Online Editor</span>
+<span id="info">if site flashes its your connection fault!</span>
 <div id='tekst'>
 <form action="index.php" method="POST" id="forma">
 <textarea name="text" spellcheck="false" id="txtar"><?php
