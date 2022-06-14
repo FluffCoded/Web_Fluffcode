@@ -13,7 +13,7 @@
     <span id="name">Your name :</span>
     <form method="POST" action="editor.php" id="forma">
     <input name="login" id="ilogin">
-    <p id="pcheck">Name must be in letters!</p>
+    <p id="pcheck">Must be letters no spaces!!</p>
     </form>
     <button type="button" id="blogin">Save</button>
     </div>
