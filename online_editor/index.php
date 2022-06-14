@@ -11,12 +11,34 @@
     <div id="kontener2">
     <span id="tytul"> Online Editor</span>
     <span id="name">Your name :</span>
-    <form method="POST" action="editor.php" id="forma">
-    <input name="login" id="ilogin">
+
+    <!-- Form do wpisania nazwy do ktorej doda sie .txt -->
+    <form id="forma">
+    <input name="login" id="nazwa">
     <p id="pcheck">Must be letters no spaces!!</p>
     </form>
-    <button type="button" id="blogin">Save</button>
+    <button type="button" id="log">zapisz</button>
     </div>
+
+    <!-- Form do stworzenia pliku w tym php -->
+   <form method="POST" action="test.php" style="visibility:hidden" id="create">
+    <input name="plik" id="plik">
+   </form>
+
+    <!-- Form do przejscia do edytora -->
+   <form method="POST" action="editor.php" style="visibility:hidden" id="next">
+    <input name="login" id="nextp">
+   </form>
+
+
+
+   <?php
+   if(isset($_POST['plik'])){
+   $nazwa = $_POST['plik'];
+   $plik = fopen("users/$nazwa", "w");
+   fwrite($plik, "0");
+}
+    ?>
     <script src="index.js"></script>
 </body>
 </html>

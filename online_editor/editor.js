@@ -22,7 +22,7 @@ reed = setInterval(function(){
         read.submit();
     }
     
-},1000);
+},2000);
 // save/read on key
 window.addEventListener('keydown', function (e) {
     ifread = false;

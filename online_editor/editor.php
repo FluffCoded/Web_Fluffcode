@@ -8,6 +8,15 @@
     <title>Online Editor</title>
 </head>
 <body>
+<?php
+    if(isset($_POST['login'])){
+        $login = $_POST['login'];
+        $plikzpozycja = fopen("users/$login", "r");
+        $pozycja = fread($plikzpozycja, filesize("users/$login"));
+        //ciag dalszy
+        fclose($plikzpozycja);
+    }
+    ?>
 <form action="editor.php" method="POST" id="read">
 <input type="number" name="read" id="inputr">
 </form>
@@ -17,12 +26,6 @@
 <div id='tekst'>
 <form action="editor.php" method="POST" id="forma">
 <textarea name="text" spellcheck="false" id="txtar"><?php
-if(isset($_POST['login'])){
-    $puser = fopen("/users/1txt", "r");
-    $user = fread($puser, filesize("/users/1txt"));
-    echo $user;
-    fclose($puser);
-}
 function read(){
     if(filesize("tekst.txt")>0){
         $plikr = fopen("tekst.txt", "r");
@@ -51,7 +54,7 @@ function read(){
 </form>
 </div>
 </div>
-<script src="skrypt.js">
+<script src="editor.js">
 </script>
 </body>
 </html>

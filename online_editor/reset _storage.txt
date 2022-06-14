@@ -1,0 +1,3 @@
+<script>
+    window.localStorage.removeItem('next');
+</script>
