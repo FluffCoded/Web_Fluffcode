@@ -11,6 +11,7 @@ var form1 = document.getElementById("forma");
 var input = [];
 var items;
 var letters = /^[A-Za-z]+$/;
+var numbers = /^[0-9]+$/;
 //utworzenie pliku z podana nazwa.txt
 document.getElementById("log").addEventListener("click", () => {
     items = login.value;

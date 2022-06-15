@@ -23,9 +23,20 @@
 <div id="kontener">
 <span id="tytul"> Online Editor</span>
 <span id="info">if site flashes its your connection fault!</span>
+<!-- odczytanie userow -->
+<?php
+$names = scandir("users");
+for($i=2; $i<sizeof($names); $i++){
+    if($names[$i]!=$_COOKIE["plik"]){
+        echo $names[$i];
+    }
+}
+
+?>
 <div id='tekst'>
 <form action="editor.php" method="POST" id="forma">
 <textarea name="text" spellcheck="false" id="txtar"><?php
+
 function read(){
     if(filesize("tekst.txt")>0){
         $plikr = fopen("tekst.txt", "r");

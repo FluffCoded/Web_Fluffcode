@@ -21,7 +21,7 @@
     </div>
 
     <!-- Form do stworzenia pliku w tym php -->
-   <form method="POST" action="test.php" style="visibility:hidden" id="create">
+   <form method="POST" action="index.php" style="visibility:hidden" id="create">
     <input name="plik" id="plik">
    </form>
 
@@ -31,12 +31,20 @@
    </form>
 
 
-
-   <?php
+<!-- Usuniecie pliku name.txt-->
+   <?php 
+   if(isset($_COOKIE['plik'])){ 
+    $nazwapliku ="users/".$_COOKIE['plik'];
+    unlink($nazwapliku);
+    setcookie("plik", "", time()-3600);
+   }
+   //utworzenie pliku name.txt
    if(isset($_POST['plik'])){
    $nazwa = $_POST['plik'];
    $plik = fopen("users/$nazwa", "w");
    fwrite($plik, "0");
+   fclose($plik);
+   setcookie("plik", $nazwa, time()+3600);
 }
     ?>
     <script src="index.js"></script>

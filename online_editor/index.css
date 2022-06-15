@@ -47,6 +47,8 @@ body{
     background-color: #333333;
     font-size: 40px;
     color: white;
+    cursor: grab;
+    box-shadow: 0 0 10px rgb(255 255 255 / 50%);
   }
   #pcheck{
     color: red;
