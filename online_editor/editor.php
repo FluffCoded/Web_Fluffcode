@@ -54,21 +54,27 @@ if(!isset($_COOKIE["plik"])){
     echo "<script>
     document.getElementById('read').action='index.php';
     document.getElementById('read').submit();
-    </script>
-    ";
+    </script>";
+
 }
-else{
 $names = scandir("users");
-for($i=2; $i<sizeof($names); $i++){
-    if($names[$i]!=$_COOKIE["plik"]){//tylko dla innych
+$names = array_slice($names,2);
+$key = array_search($_COOKIE['plik'],$names);
+unset($names[$key]);
+$names = array_values($names);
+if(isset($names[0])){
+$userline = [];
+for($i=0; $i<sizeof($names); $i++){
         $plikline=file("users/".$names[$i], FILE_IGNORE_NEW_LINES);
-        if($plikline[1]<time()){
-            unlink("users/".$names[$i]);
+        $userline[$i]=$plikline[0]; //array z liniami
+        if($plikline[1]<time()-4){
+            unlink("users/".$names[$i]); 
         }
-        echo "others: <br>";
+        //info
         echo $names[$i]." linia: ".$plikline[0]." date: ".$plikline[1];
-    }
+        echo "<br>";
 }
+print_r($userline);
 }
 ?>
 <!-- END odczytanie userow -->
@@ -77,7 +83,7 @@ for($i=2; $i<sizeof($names); $i++){
 <?php
 $plikline= file("users/".$_COOKIE['plik'], FILE_IGNORE_NEW_LINES);
     $plikline[0]=$_COOKIE['linia'];
-    $plikline[1]=time()+60;
+    $plikline[1]=time();
     file_put_contents("users/".$_COOKIE['plik'] , implode( "\n", $plikline ) );
 ?>
 <!-- END Zapis lini / daty pliku  END -->

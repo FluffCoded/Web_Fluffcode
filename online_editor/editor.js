@@ -39,8 +39,6 @@ window.addEventListener("wheel",()=>{
         setTimeout(ifread=true,500);
     },100);
 });
-
-
 //read interval
 setInterval(function(){
     if(ifread == true){
@@ -50,4 +48,3 @@ setInterval(function(){
     }
     
 },2000);
-
