@@ -2,7 +2,6 @@ var txt = document.getElementById("txtar"); // text
 var forma = document.getElementById("forma"); // formularz z textem
 var read = document.getElementById("read"); // formularz do read
 var numer = 1; // obsluga pozycji kursora
-var reed; // interval reada
 var scrolint; // obsluga mouse scrolla
 var ifread = true; //czy read ma sie odpalac
 
@@ -16,27 +15,6 @@ window.onload = function () {
     },1);
     document.cookie=`linia=${localStorage.getItem("numer")}; expires=${new Date().getDate()}; path=/kod/fluff/online_editor`;
 }
-// mouse scroll
-window.addEventListener("wheel",()=>{
-    ifread = false;
-    clearTimeout(scrolint);
-    scrolint = setTimeout(()=>{
-        localStorage.setItem("scrol", txt.scrollTop);
-        setTimeout(ifread=true,500);
-    },100);
-});
-
-
-//read interval
-reed = setInterval(function(){
-    if(ifread == true){
-        numer = parseInt(document.getElementById('txtar').selectionEnd);
-        localStorage.setItem("numer", numer);
-        read.submit();
-    }
-    
-},2000);
-
 // save/read on key
 window.addEventListener('keydown', function (e) {
     ifread = false;
@@ -52,3 +30,24 @@ window.addEventListener('keydown', function (e) {
     }, 12);
 }
 });
+// mouse scroll
+window.addEventListener("wheel",()=>{
+    ifread = false;
+    clearTimeout(scrolint);
+    scrolint = setTimeout(()=>{
+        localStorage.setItem("scrol", txt.scrollTop);
+        setTimeout(ifread=true,500);
+    },100);
+});
+
+
+//read interval
+setInterval(function(){
+    if(ifread == true){
+        numer = parseInt(document.getElementById('txtar').selectionEnd);
+        localStorage.setItem("numer", numer);
+        read.submit();
+    }
+    
+},2000);
+
