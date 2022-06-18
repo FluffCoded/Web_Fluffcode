@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="UTF-8">
     <meta content="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,9 +12,9 @@
 </form>
 <div id="kontener">
 <span id="tytul"> Fluff Editor</span>
+<div id='tekst'>
 
 <!-- Text area -->
-<div id='tekst'>
 <form action="editor.php" method="POST" id="forma">
 <textarea name="text" spellcheck="false" id="txtar"><?php
 function read(){
@@ -49,13 +48,13 @@ function read(){
 </div>
 
 <!-- odczytanie userow -->
+<div id="info">
 <?php
 if(!isset($_COOKIE["plik"])){
     echo "<script>
     document.getElementById('read').action='index.php';
     document.getElementById('read').submit();
     </script>";
-
 }
 $names = scandir("users");
 $names = array_slice($names,2);
@@ -63,20 +62,22 @@ $key = array_search($_COOKIE['plik'],$names);
 unset($names[$key]);
 $names = array_values($names);
 if(isset($names[0])){
-$userline = [];
 for($i=0; $i<sizeof($names); $i++){
         $plikline=file("users/".$names[$i], FILE_IGNORE_NEW_LINES);
         $userline[$i]=$plikline[0]; //array z liniami
+        $username[$i]=$names[$i];
         if($plikline[1]<time()-4){
             unlink("users/".$names[$i]); 
         }
         //info
-        echo $names[$i]." linia: ".$plikline[0]." date: ".$plikline[1];
-        echo "<br>";
+        echo "<span> ".$names[$i]." lane: ".$plikline[0]." date: ".$plikline[1]." "."</span>";
 }
-print_r($userline);
 }
 ?>
+<script>
+var lines = <?=json_encode($userline)?>;
+var names = <?=json_encode($username)?>;
+</script>
 <!-- END odczytanie userow -->
 
 <!-- Zapis lini / daty pliku-->
@@ -87,9 +88,8 @@ $plikline= file("users/".$_COOKIE['plik'], FILE_IGNORE_NEW_LINES);
     file_put_contents("users/".$_COOKIE['plik'] , implode( "\n", $plikline ) );
 ?>
 <!-- END Zapis lini / daty pliku  END -->
-
 </div>
-<script src="editor.js">
-</script>
+</div>
+<script src="editor.js"></script>
 </body>
 </html>

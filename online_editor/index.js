@@ -16,19 +16,24 @@ var numbers = /^[0-9]+$/;
 document.getElementById("log").addEventListener("click", () => {
     items = login.value;
     input = Array.of(...items);
-    for (i = 0; i < input.length; i++) {
-        if (input[i].match(letters)) {
-            if (i == input.length - 1) {
-                var plik = document.getElementById("nazwa").value;
-                plik = plik + ".txt";
-                document.getElementById("plik").value = plik;
-                localStorage.setItem("next", plik);
-                document.getElementById("create").submit();
+    if (input.length > 17) {
+        document.getElementById("pcheck").style.visibility = "visible";
+    }
+    else {
+        for (i = 0; i < input.length; i++) {
+            if (input[i].match(letters)) {
+                if (i == input.length - 1) {
+                    var plik = document.getElementById("nazwa").value;
+                    plik = plik + ".txt";
+                    document.getElementById("plik").value = plik;
+                    localStorage.setItem("next", plik);
+                    document.getElementById("create").submit();
+                }
             }
-        }
-        else {
-            document.getElementById("pcheck").style.visibility = "visible";
-            break;
+            else {
+                document.getElementById("pcheck").style.visibility = "visible";
+                break;
+            }
         }
     }
 });

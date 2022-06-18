@@ -15,7 +15,7 @@
     <!-- Form do wpisania nazwy do ktorej doda sie .txt -->
     <form id="forma">
     <input name="login" id="nazwa">
-    <p id="pcheck">Must be letters no spaces!!</p>
+    <p id="pcheck">Only letter (max 17)</p>
     </form>
     <button type="button" id="log">zapisz</button>
     </div>

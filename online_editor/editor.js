@@ -4,7 +4,6 @@ var read = document.getElementById("read"); // formularz do read
 var numer = 1; // obsluga pozycji kursora
 var scrolint; // obsluga mouse scrolla
 var ifread = true; //czy read ma sie odpalac
-
 // on load - cursor and scroll
 window.onload = function () {
     document.getElementById("txtar").focus();
@@ -19,7 +18,6 @@ window.onload = function () {
 window.addEventListener('keydown', function (e) {
     ifread = false;
     if(e.key=="Control" || e.key=="Shift" || e.key=="AltGraph"){
-
     }
     else{
     setTimeout(function () {
@@ -46,5 +44,31 @@ setInterval(function(){
         localStorage.setItem("numer", numer);
         read.submit();
     }
-    
-},2000);
+},1000);
+//collab
+var lewo;
+var wiersz;
+var multi;
+for(i=0;i<lines.length; i++){
+    var span = document.createElement('span');
+    span.classList.add("user");
+    span.innerHTML=`${names[i].slice(0,-4)}`;
+
+
+
+    if(lines[i]>120){
+    lewo=lines[i]/120-parseInt(lines[i]/120);
+    lewo=parseInt(lewo*120);
+    multi=parseInt(lines[i]/120);
+    multi=multi*multi*multi*multi*multi;
+    lewo = 14*lewo-multi;
+    }
+    else{
+    lewo=14*lines[i];
+    }
+    span.style.left=`${30+lewo}px`;
+
+    wiersz=parseInt(lines[i]/120);
+    span.style.top=`${50*wiersz}px`;
+    document.getElementById("tekst").appendChild(span);
+}
